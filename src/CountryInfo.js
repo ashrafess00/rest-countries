@@ -16,7 +16,8 @@ const CountryInfo = ({ match }) => {
   useEffect(() => {
     getCountries();
     window.scrollTo(0, 0);
-  }, [info]);
+    console.log("ki");
+  }, [name]);
 
   return (
     <div className="infoCon">
@@ -95,7 +96,11 @@ const Container = (props) => {
           <span>Border Countries :</span>
         </p>
         <div className="borContainers">
-          <Borders borders={props.borders} />
+          {props.borders.length !== 0 ? (
+            <Borders borders={props.borders} />
+          ) : (
+            <span></span>
+          )}
         </div>
       </div>
     </div>
@@ -103,7 +108,7 @@ const Container = (props) => {
 };
 
 const Borders = (props) => {
-  const [borders, setBorders] = useState([]);
+  const [borders, setBorders] = useState([{ name: "" }]);
 
   const test = async () => {
     const response = await fetch(
@@ -115,7 +120,7 @@ const Borders = (props) => {
 
   useEffect(() => {
     test();
-  }, [borders]);
+  }, [props.borders]);
 
   return (
     <>
@@ -131,6 +136,9 @@ const Borders = (props) => {
 };
 
 Container.defaultProps = {
+  borders: [],
+};
+Borders.defaultProps = {
   borders: [],
 };
 

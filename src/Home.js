@@ -11,7 +11,6 @@ const Home = () => {
     const response = await fetch("https://restcountries.com/v3.1/all");
     const dataa = await response.json();
     setData(dataa);
-    console.log(dataa);
   };
   useEffect(() => {
     getCountries();
