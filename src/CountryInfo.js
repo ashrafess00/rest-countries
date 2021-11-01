@@ -15,6 +15,7 @@ const CountryInfo = ({ match }) => {
 
   useEffect(() => {
     getCountries();
+    window.scrollTo(0, 0);
   }, [info]);
 
   return (
