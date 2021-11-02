@@ -4,6 +4,7 @@ import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
+localStorage.setItem("colorState", false);
 const NavBar = () => {
   const colours = {
     darkBlue: "hsl(209, 23%, 22%)",
@@ -11,7 +12,9 @@ const NavBar = () => {
     white: "hsl(0, 0%, 100%)",
     VeryLightGray: "hsl(0, 0%, 98%)",
   };
-  const [colorChanged, setColourChnaged] = useState(false);
+  const [colorChanged, setColourChnaged] = useState(
+    localStorage.getItem("colorState")
+  );
   let root = document.querySelector(":root");
 
   if (colorChanged) {

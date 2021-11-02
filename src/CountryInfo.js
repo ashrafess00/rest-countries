@@ -13,9 +13,7 @@ const CountryInfo = ({ match }) => {
       const data = await response.json();
       setInfo(data);
       console.log(data);
-    } catch (err) {
-      console.log("hi");
-    }
+    } catch (err) {}
   };
 
   useEffect(() => {
