@@ -41,11 +41,7 @@ const Home = () => {
             <option value="Oceania">Oceania</option>
           </select>
         </div>
-        {data.length == 0 ? (
-          <div className="loading">Getting countries info...</div>
-        ) : (
-          ""
-        )}
+        {data.length == 0 ? <div className="loading"></div> : ""}
         <div className="countries">
           {data
             .filter((e) => {
