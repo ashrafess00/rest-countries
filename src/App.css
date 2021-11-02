@@ -189,6 +189,29 @@ a:active {
   margin-bottom: 1rem;
 }
 
+div.loading {
+  margin: 2rem auto;
+  text-align: center;
+  color: red;
+  animation: anim 1s infinite;
+  font-size: 2rem;
+}
+
+@keyframes anim {
+  0% {
+    opacity: 1;
+    color: red;
+  }
+  50% {
+    opacity: 1;
+    color: blue;
+  }
+  100% {
+    opacity: 0;
+    color: green;
+  }
+}
+
 @media (min-width: 600px) {
   .infosff {
     width: 100%;

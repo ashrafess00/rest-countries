@@ -3,21 +3,25 @@ import { Link } from "react-router-dom";
 
 const CountryInfo = ({ match }) => {
   const [info, setInfo] = useState([]);
-  let name = match.params.id;
+  let capital = match.params.id;
 
   const getCountries = async () => {
-    const response = await fetch(
-      `https://restcountries.com/v3.1/name/${name}?fullText=true`
-    );
-    const data = await response.json();
-    setInfo(data);
+    try {
+      const response = await fetch(
+        `https://restcountries.com/v2/capital/${capital}`
+      );
+      const data = await response.json();
+      setInfo(data);
+      console.log(data);
+    } catch (err) {
+      console.log("hi");
+    }
   };
 
   useEffect(() => {
     getCountries();
     window.scrollTo(0, 0);
-    console.log("ki");
-  }, [name]);
+  }, [capital]);
 
   return (
     <div className="infoCon">
@@ -31,14 +35,14 @@ const CountryInfo = ({ match }) => {
             keys={Date.now()}
             img={e.flags.png}
             name={e.name.common}
-            nativeName={e.name[Object.keys(e.name)[1]]}
+            nativeName={e.nativeName}
             population={e.population.toLocaleString()}
             region={e.region}
             subRegion={e.subregion}
             capital={e.capital}
             tld={e.tld}
             currencies={e.currencies[Object.keys(e.currencies)[0]].name}
-            lang={Object.values(e.languages).join(", ")}
+            lang={e.languages.map((e) => e.name).join(" ,")}
             borders={e.borders}
           />
         );
@@ -111,11 +115,16 @@ const Borders = (props) => {
   const [borders, setBorders] = useState([{ name: "" }]);
 
   const test = async () => {
-    const response = await fetch(
-      `https://restcountries.com/v2/alpha?codes=${props.borders.join(",")}`
-    );
-    const data = await response.json();
-    setBorders(data);
+    try {
+      const response = await fetch(
+        `https://restcountries.com/v2/alpha?codes=${props.borders.join(",")}`
+      );
+      const data = await response.json();
+      setBorders(data);
+      console.log(data);
+    } catch (err) {
+      console.log("hi");
+    }
   };
 
   useEffect(() => {
@@ -126,7 +135,7 @@ const Borders = (props) => {
     <>
       {borders.map((b) => {
         return (
-          <Link to={b.name} className="border">
+          <Link to={b.capital} className="border">
             {b.name}
           </Link>
         );

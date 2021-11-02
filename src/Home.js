@@ -41,6 +41,11 @@ const Home = () => {
             <option value="Oceania">Oceania</option>
           </select>
         </div>
+        {data.length == 0 ? (
+          <div className="loading">Getting countries info...</div>
+        ) : (
+          ""
+        )}
         <div className="countries">
           {data
             .filter((e) => {
@@ -51,7 +56,7 @@ const Home = () => {
             })
             .map((h) => {
               return (
-                <Link to={`${h.name.common}`} className="countryContainer">
+                <Link to={`${h.capital}`} className="countryContainer">
                   <Countries
                     key={Math.floor(Math.random() * Date.now())}
                     img={h.flags.png}
