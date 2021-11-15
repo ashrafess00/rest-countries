@@ -7,15 +7,13 @@ import { useState,useEffect } from "react";
 
 const NavBar = () => {
 
-  
-
   const colours = {
     darkBlue: "hsl(209, 23%, 22%)",
     veryDarkBlue: "hsl(207, 26%, 17%)",
     white: "hsl(0, 0%, 100%)",
     VeryLightGray: "hsl(0, 0%, 98%)",
   };
-  // const [colorChanged, setColourChnaged] = useState(false);
+  
   const [colorChanged, setColourChnaged] = useState(()=>{
     const savedMode = localStorage.getItem("mode")
     return savedMode && JSON.parse(savedMode)
@@ -25,7 +23,7 @@ const NavBar = () => {
   //
   useEffect(() => {
     localStorage.setItem("mode",JSON.stringify(colorChanged))
-    
+
     console.log(localStorage.getItem("mode"))
     return () => {
     }
