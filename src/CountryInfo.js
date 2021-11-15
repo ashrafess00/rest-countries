@@ -12,7 +12,6 @@ const CountryInfo = ({ match }) => {
       );
       const data = await response.json();
       setInfo(data);
-      console.log(data);
     } catch (err) {}
   };
 
@@ -119,7 +118,6 @@ const Borders = (props) => {
       );
       const data = await response.json();
       setBorders(data);
-      console.log(data);
     } catch (err) {
       console.log("hi");
     }
