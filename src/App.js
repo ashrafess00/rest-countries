@@ -7,10 +7,14 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <Switch>
       <Route path="/" exact>
-        <Home />
+      <Home />
       </Route>
       <Route path="/:id" component={CountryInfo} />
+      </Switch>
+      
+
     </BrowserRouter>
   );
 }
