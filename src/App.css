@@ -176,9 +176,10 @@ a:active {
   box-shadow: var(--boxShadow);
   background-color: var(--White);
   text-align: center;
-  width: 30%;
+  width: auto;
   justify-self: center;
   font-size: 0.7rem;
+  padding: 0 0.5rem;
 }
 
 .infoCon {
@@ -249,7 +250,8 @@ div.loading {
     box-shadow: var(--boxShadow);
     background-color: var(--White);
     text-align: center;
-    width: 20%;
+    width: auto;
+    padding: 0 0.5rem;
   }
 
   .bor {
