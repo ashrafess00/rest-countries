@@ -2,32 +2,26 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
-import { useState,useEffect } from "react";
-
+import { useState, useEffect } from "react";
 
 const NavBar = () => {
-
   const colours = {
     darkBlue: "hsl(209, 23%, 22%)",
     veryDarkBlue: "hsl(207, 26%, 17%)",
     white: "hsl(0, 0%, 100%)",
     VeryLightGray: "hsl(0, 0%, 98%)",
   };
-  
-  const [colorChanged, setColourChnaged] = useState(()=>{
-    const savedMode = localStorage.getItem("mode")
-    return savedMode && JSON.parse(savedMode)
 
+  const [colorChanged, setColourChnaged] = useState(() => {
+    const savedMode = localStorage.getItem("mode");
+    return savedMode && JSON.parse(savedMode);
   });
 
   //
   useEffect(() => {
-    localStorage.setItem("mode",JSON.stringify(colorChanged))
-
-    console.log(localStorage.getItem("mode"))
-    return () => {
-    }
-  }, [colorChanged])
+    localStorage.setItem("mode", JSON.stringify(colorChanged));
+    return () => {};
+  }, [colorChanged]);
 
   let root = document.querySelector(":root");
   if (colorChanged) {
@@ -40,7 +34,6 @@ const NavBar = () => {
     root.style.setProperty("--Very-Light-Gray", colours.VeryLightGray);
   }
 
-  
   return (
     <header>
       <h1>Where in the world?</h1>
